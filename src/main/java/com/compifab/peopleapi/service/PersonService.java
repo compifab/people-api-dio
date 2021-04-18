@@ -3,6 +3,7 @@ package com.compifab.peopleapi.service;
 import com.compifab.peopleapi.dto.MessageResponseDTO;
 import com.compifab.peopleapi.dto.request.PersonDTO;
 import com.compifab.peopleapi.entity.Person;
+import com.compifab.peopleapi.exception.PersonNotFoundException;
 import com.compifab.peopleapi.mapper.PersonMapper;
 import com.compifab.peopleapi.repository.PersonRepository;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,11 @@ public class PersonService {
         List<Person> allPeople = personRepository.findAll();
         return allPeople.stream().map(personMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    public PersonDTO findById(Long id) throws PersonNotFoundException {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new PersonNotFoundException(id));
+        return personMapper.toDTO(person);
     }
 }

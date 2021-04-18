@@ -2,6 +2,7 @@ package com.compifab.peopleapi.controller;
 
 import com.compifab.peopleapi.dto.MessageResponseDTO;
 import com.compifab.peopleapi.dto.request.PersonDTO;
+import com.compifab.peopleapi.exception.PersonNotFoundException;
 import com.compifab.peopleapi.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class PersonController {
     @GetMapping
     public List<PersonDTO> listAll() {
         return personService.listAll();
+    }
+
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 
     @PostMapping
