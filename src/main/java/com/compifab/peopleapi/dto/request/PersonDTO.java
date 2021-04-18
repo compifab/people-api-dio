@@ -1,6 +1,5 @@
 package com.compifab.peopleapi.dto.request;
 
-import com.compifab.peopleapi.entity.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +35,5 @@ public class PersonDTO {
 
     @Valid
     @NotEmpty
-    private List<Phone> phones;
+    private List<PhoneDTO> phones;
 }

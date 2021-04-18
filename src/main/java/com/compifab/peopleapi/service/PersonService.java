@@ -20,8 +20,8 @@ public class PersonService {
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
     public MessageResponseDTO createPerson(PersonDTO personDTO) {
-        Person savedPerson = personMapper.toModel(personDTO);
-        personRepository.save(savedPerson);
+        Person personToSave = personMapper.toModel(personDTO);
+        Person savedPerson = personRepository.save(personToSave);
 
         return createMessageResponse(savedPerson.getId(), "Created person with ID: ");
     }
