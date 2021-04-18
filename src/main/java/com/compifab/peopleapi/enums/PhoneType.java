@@ -1,2 +1,15 @@
-package com.compifab.peopleapi.enums;public enum PhoneType {
+package com.compifab.peopleapi.enums;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public enum PhoneType {
+
+    HOME("Home"),
+    MOBILE("Mobile"),
+    COMMERCIAL("Commercial");
+
+    private final String description;
 }
