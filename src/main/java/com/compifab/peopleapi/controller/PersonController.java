@@ -18,6 +18,12 @@ import java.util.List;
 public class PersonController {
 
     private PersonService personService;
+    
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public String test(@RequestBody Object result) {
+        return result.toString();
+    }
 
     @GetMapping
     public List<PersonDTO> listAll() {
